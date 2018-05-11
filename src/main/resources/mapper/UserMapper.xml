@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.gas.Mapper.UserinfoMapper">
+
+    <!--auto generated Code-->
+    <resultMap id="AllColumnMap" type="com.example.gas.entity.Userinfo">
+        <result column="index" property="id"/>
+        <result column="unit_name" property="unitName"/>
+        <result column="user_name" property="userName"/>
+        <result column="email" property="email"/>
+        <result column="telephone" property="telePhone"/>
+        <result column="create_time" property="createTime"/>
+        <result column="password" property="password"/>
+    </resultMap>
+
+    <!--auto generated Code-->
+    <sql id="all_column">
+        `index`,
+        `unit_name`,
+        `user_name`,
+         `email`,
+        `telePhone`,
+        `create_time`,
+         `password`
+    </sql>
+
+    <!--auto generated Code-->
+    <insert id="insert">
+        INSERT INTO `user`
+        ( `index`,
+        `unit_name`,
+        `user_name`,
+         `email`,
+        `telephone`,
+        `create_time`,
+         `password`)
+        VALUES (#{pojo.index},#{pojo.unitName},#{pojo.userName},#{pojo.email},#{pojo.telePhone},#{pojo.createTime},#{pojo.password})
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO `user`(
+        <include refid="all_column"/>
+        )VALUES
+        <foreach collection="pojos" item="pojo" index="index" separator=",">
+            (
+            #{pojo.index},#{pojo.unitName},#{pojo.userName},#{pojo.email},#{pojo.telePhone},#{pojo.createTime},#{pojo.password}
+            )
+        </foreach>
+    </insert>
+
+
+    <!--auto generated Code-->
+    <select id="get" resultType="com.example.gas.entity.Userinfo">
+        select  `index`,
+        `unit_name`,
+        `user_name`,
+        `email`,
+        `telePhone`,
+        `create_time`,
+        `password` from tbl_user_info where `index` = #{id}
+    </select>
+    <select id="getList" resultType="com.example.gas.entity.Userinfo">
+        select  `index`,
+        `unit_name`,
+        `user_name`,
+        `email`,
+        `telePhone`,
+        `create_time`,
+        `password` from tbl_user_info
+    </select>
+    <select id="login" resultType="com.example.gas.entity.Userinfo">
+        select  `index`,
+        `unit_name`,
+        `user_name`,
+        `email`,
+        `telePhone`,
+        `create_time`,
+        `password` from tbl_user_info WHERE `user_name` = #{userName} and `password` = #{password}
+    </select>
+
+
+
+    <delete id="delete">
+        delete from tbl_user_info where `index` = #{id}
+    </delete>
+</mapper>
