@@ -2,7 +2,7 @@ package com.example.gas.Mapper;
 
 import com.example.gas.entity.Userinfo;
 import org.apache.ibatis.annotations.Mapper;
-import org.springframework.data.repository.query.Param;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,6 +23,7 @@ public interface UserinfoMapper {
     int update(@Param("pojo") Userinfo pojo);
 
     Userinfo get(@Param("id") int id);
+
     List<Userinfo> getList();
 
     int delete(@Param("id") int id);

@@ -15,13 +15,13 @@
 
     <!--auto generated Code-->
     <sql id="all_column">
-        `index`,
-        `unit_name`,
-        `user_name`,
-         `email`,
-        `telePhone`,
-        `create_time`,
-         `password`
+        `index` AS `index`,
+        `unit_name` AS `unitName`,
+        `user_name` AS `userName`,
+         `email` AS `email`,
+        `telePhone` AS `telePhone`,
+        `create_time` AS `createTime`,
+         `password` AS  `password`
     </sql>
 
     <!--auto generated Code-->
@@ -52,31 +52,13 @@
 
     <!--auto generated Code-->
     <select id="get" resultType="com.example.gas.entity.Userinfo">
-        select  `index`,
-        `unit_name`,
-        `user_name`,
-        `email`,
-        `telePhone`,
-        `create_time`,
-        `password` from tbl_user_info where `index` = #{id}
+        select   <include refid="all_column"/> from tbl_user_info where `index` = #{id}
     </select>
     <select id="getList" resultType="com.example.gas.entity.Userinfo">
-        select  `index`,
-        `unit_name`,
-        `user_name`,
-        `email`,
-        `telePhone`,
-        `create_time`,
-        `password` from tbl_user_info
+        select   <include refid="all_column"/> from tbl_user_info
     </select>
     <select id="login" resultType="com.example.gas.entity.Userinfo">
-        select  `index`,
-        `unit_name`,
-        `user_name`,
-        `email`,
-        `telePhone`,
-        `create_time`,
-        `password` from tbl_user_info WHERE `user_name` = #{userName} and `password` = #{password}
+        select   <include refid="all_column"/> from tbl_user_info WHERE `user_name` = #{userName} and `password` = #{password}
     </select>
 
 

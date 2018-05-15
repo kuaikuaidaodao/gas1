@@ -7,12 +7,10 @@ package com.example.gas.entity;
  **/
 public class Stationinfo {
     private Integer index;
-    private String unitName;
-    private String userName;
-    private String email;
-    private String telePhone;
-    private String createTime;
-    private String password;
+    private String name;
+    private String unit_Name;
+    private String longitude;
+    private String latitude;
 
     public Integer getIndex() {
         return index;
@@ -20,53 +18,48 @@ public class Stationinfo {
 
     public void setIndex(Integer index) {
         this.index = index;
-    }
 
-    public String getUnitName() {
-        return unitName;
-    }
 
-    public void setUnitName(String unitName) {
-        this.unitName = unitName;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getTelePhone() {
-        return telePhone;
-    }
-
-    public void setTelePhone(String telePhone) {
-        this.telePhone = telePhone;
-    }
-
-    public String getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(String createTime) {
-        this.createTime = createTime;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
+
+    public String getUnit_Name() {
+        return unit_Name;
+    }
+
+    public void setUnit_Name(String unit_Name) {
+        this.unit_Name = unit_Name;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+}
+
+
+
+
+
+
+
