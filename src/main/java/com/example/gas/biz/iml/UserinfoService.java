@@ -25,4 +25,10 @@ public class UserinfoService implements IUserinfoService{
         PageHelper.startPage(pageNo, pageSize);
         return userinfoMapper.getList();
     }
+
+    @Override
+    public List<Userinfo> searchByName(int pageNo, int pageSize, String unit_name) {
+        PageHelper.startPage(pageNo, pageSize);
+        return userinfoMapper.searchByName(unit_name);
+    }
 }

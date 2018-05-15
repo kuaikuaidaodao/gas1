@@ -1,17 +1,18 @@
 package com.example.gas.Mapper;
 
-import com.example.gas.entity.DeviceDateCurrent;
-import com.example.gas.entity.Deviceinfo;
 import com.example.gas.entity.Userinfo;
+import com.example.gas.entity.Warninfo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
 @Mapper
 @Service
-public interface DeviceinfoMapper {
-    List<DeviceDateCurrent> getList(@Param("unit_name") String unit_name);
-    List<DeviceDateCurrent> getListDefault();
+public interface WarninfoMapper {
+    int insert(@Param("pojo") Warninfo pojo);
+
+    int insertList(@Param("pojo") List<Warninfo> pojos);
+
+    int update(@Param("pojo") Warninfo pojo);
 }

@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface IDeviceDateCurrentService {
     List<DeviceDateCurrent> getList(int pageNo, int pageSize,String unit_name);
+    List<DeviceDateCurrent> getListDefault(int pageNo, int pageSize);
+
 }

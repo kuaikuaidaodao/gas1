@@ -19,4 +19,10 @@ public class DeviceDateCurrentService implements IDeviceDateCurrentService {
         PageHelper.startPage(pageNo, pageSize);
         return deviceinfoMapper.getList(unit_name);
     }
+
+    @Override
+    public List<DeviceDateCurrent> getListDefault(int pageNo, int pageSize) {
+        PageHelper.startPage(pageNo, pageSize);
+        return deviceinfoMapper.getListDefault();
+    }
 }

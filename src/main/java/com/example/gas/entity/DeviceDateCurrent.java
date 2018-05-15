@@ -28,6 +28,7 @@ public class DeviceDateCurrent {
     private String station_name;
     private Stationinfo stationinfo;
     private Deviceinfo  deviceinfo;
+    private Warninfo warninfo;
     public long getDevice_id() {
         return device_id;
     }
@@ -242,5 +243,13 @@ public class DeviceDateCurrent {
 
     public void setDeviceinfo(Deviceinfo deviceinfo) {
         this.deviceinfo = deviceinfo;
+    }
+
+    public Warninfo getWarninfo() {
+        return warninfo;
+    }
+
+    public void setWarninfo(Warninfo warninfo) {
+        this.warninfo = warninfo;
     }
 }

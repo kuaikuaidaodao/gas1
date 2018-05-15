@@ -1,5 +1,6 @@
 package com.example.gas.Controller;
 
+import com.example.gas.Config.Common;
 import com.example.gas.Mapper.DeviceinfoMapper;
 import com.example.gas.biz.IDeviceDateCurrentService;
 import com.example.gas.entity.DeviceDateCurrent;
@@ -25,9 +26,15 @@ public class StationController {
     @Autowired
     IDeviceDateCurrentService iDeviceDateCurrentService;
     @RequestMapping("getList")
-    public PageInfo<DeviceDateCurrent> getList(String unit_name){
-
-        List<DeviceDateCurrent> deviceDateCurrents = iDeviceDateCurrentService.getList(1, 15,unit_name);
+    public PageInfo<DeviceDateCurrent> getList(String unit_name,int pageNo){
+        List<DeviceDateCurrent> deviceDateCurrents = iDeviceDateCurrentService.getList(pageNo, Common.DEVICEPAGESIZE,unit_name);
+        // 需要把Page包装成PageInfo对象才能序列化。该插件也默认实现了一个PageInf0
+        PageInfo<DeviceDateCurrent> pageInfo = new PageInfo<DeviceDateCurrent>(deviceDateCurrents);
+        return  pageInfo;
+    }
+    @RequestMapping("getListDefault")
+    public PageInfo<DeviceDateCurrent> getListDefault(int pageNo){
+        List<DeviceDateCurrent> deviceDateCurrents = iDeviceDateCurrentService.getListDefault(pageNo, Common.DEVICEPAGESIZE);
         // 需要把Page包装成PageInfo对象才能序列化。该插件也默认实现了一个PageInf0
         PageInfo<DeviceDateCurrent> pageInfo = new PageInfo<DeviceDateCurrent>(deviceDateCurrents);
         return  pageInfo;

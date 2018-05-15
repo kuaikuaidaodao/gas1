@@ -61,7 +61,9 @@
         select   <include refid="all_column"/> from tbl_user_info WHERE `user_name` = #{userName} and `password` = #{password}
     </select>
 
-
+    <select id="searchByName" resultType="com.example.gas.entity.Userinfo">
+        select   <include refid="all_column"/> from tbl_user_info where  `unit_name` LIKE "%"#{unit_name}"%"
+    </select>
 
     <delete id="delete">
         delete from tbl_user_info where `index` = #{id}

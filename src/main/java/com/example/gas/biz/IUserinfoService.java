@@ -11,4 +11,6 @@ import java.util.List;
  **/
 public interface IUserinfoService {
     List<Userinfo> findByPage(int pageNo, int pageSize);
+
+    List<Userinfo> searchByName(int i, int i1, String unit_name);
 }

@@ -1,6 +1,7 @@
 package com.example.gas.Controller;
 
 
+import com.example.gas.Config.Common;
 import com.example.gas.Mapper.UserinfoMapper;
 import com.example.gas.biz.IUserinfoService;
 import com.example.gas.entity.Userinfo;
@@ -46,8 +47,15 @@ public class UserinfoController {
         return userinfoMapper.get(id);
     }
     @RequestMapping("getList")
-    PageInfo<Userinfo> getList(){
-        List<Userinfo> userinfos = iUserinfoService.findByPage(1, 15);
+    PageInfo<Userinfo> getList(int pageNo){
+        List<Userinfo> userinfos = iUserinfoService.findByPage(pageNo,Common.USERPAGESIZE);
+        // 需要把Page包装成PageInfo对象才能序列化。该插件也默认实现了一个PageInf0
+        PageInfo<Userinfo> pageInfo = new PageInfo<Userinfo>(userinfos);
+        return  pageInfo;
+    }
+    @RequestMapping("searchByName")
+    PageInfo<Userinfo> searchByName(String unit_name,int pageNo){
+        List<Userinfo> userinfos = iUserinfoService.searchByName(pageNo, Common.USERPAGESIZE,unit_name);
         // 需要把Page包装成PageInfo对象才能序列化。该插件也默认实现了一个PageInf0
         PageInfo<Userinfo> pageInfo = new PageInfo<Userinfo>(userinfos);
         return  pageInfo;

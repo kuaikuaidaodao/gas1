@@ -29,4 +29,6 @@ public interface UserinfoMapper {
     int delete(@Param("id") int id);
 
     Userinfo login(@Param("userName") String userName, @Param("password") String password);
+
+    List<Userinfo> searchByName(@Param("unit_name") String unit_name);
 }
