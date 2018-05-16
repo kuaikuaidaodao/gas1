@@ -3,6 +3,8 @@ package com.example.gas.biz.iml;
 import com.example.gas.Mapper.DeviceinfoMapper;
 import com.example.gas.biz.IDeviceDateCurrentService;
 import com.example.gas.entity.DeviceDateCurrent;
+import com.example.gas.entity.DeviceDateHistory;
+import com.example.gas.entity.Deviceinfo;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,5 +26,23 @@ public class DeviceDateCurrentService implements IDeviceDateCurrentService {
     public List<DeviceDateCurrent> getListDefault(int pageNo, int pageSize) {
         PageHelper.startPage(pageNo, pageSize);
         return deviceinfoMapper.getListDefault();
+    }
+
+    @Override
+    public List<DeviceDateHistory> getListHistory(int pageNo, int pagesize, int device_id) {
+        PageHelper.startPage(pageNo, pagesize);
+        return deviceinfoMapper.getListHistory(device_id);
+    }
+
+    @Override
+    public List<Deviceinfo> getDeviceList(int pageNo, int pageSize) {
+        PageHelper.startPage(pageNo, pageSize);
+        return deviceinfoMapper.getDeviceList();
+    }
+
+    @Override
+    public List<Deviceinfo> searchDeviceList(int pageNo, int pageSize, String container_id) {
+        PageHelper.startPage(pageNo, pageSize);
+        return deviceinfoMapper.searchDeviceList(container_id);
     }
 }

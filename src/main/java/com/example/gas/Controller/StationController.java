@@ -1,10 +1,9 @@
 package com.example.gas.Controller;
 
 import com.example.gas.Config.Common;
-import com.example.gas.Mapper.DeviceinfoMapper;
-import com.example.gas.biz.IDeviceDateCurrentService;
+import com.example.gas.biz.IStationinfoService;
 import com.example.gas.entity.DeviceDateCurrent;
-import com.example.gas.entity.Deviceinfo;
+import com.example.gas.entity.Stationinfo;
 import com.example.gas.entity.Userinfo;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,21 +21,30 @@ import java.util.List;
 @RequestMapping("/station")
 public class StationController {
     @Autowired
-    DeviceinfoMapper deviceinfoMapper;
-    @Autowired
-    IDeviceDateCurrentService iDeviceDateCurrentService;
+    IStationinfoService iStationinfoService;
+
+@RequestMapping("insert")
+    int insert(Stationinfo stationinfo){
+    return iStationinfoService.insert(stationinfo);
+
+}
+    @RequestMapping("update")
+    int update(Stationinfo stationinfo){
+        return iStationinfoService.update(stationinfo);
+
+    }
     @RequestMapping("getList")
-    public PageInfo<DeviceDateCurrent> getList(String unit_name,int pageNo){
-        List<DeviceDateCurrent> deviceDateCurrents = iDeviceDateCurrentService.getList(pageNo, Common.DEVICEPAGESIZE,unit_name);
+    PageInfo<Stationinfo> getList(int pageNo){
+        List<Stationinfo> stationinfos = iStationinfoService.getList(pageNo,Common.STATIONPAGESIZE);
         // 需要把Page包装成PageInfo对象才能序列化。该插件也默认实现了一个PageInf0
-        PageInfo<DeviceDateCurrent> pageInfo = new PageInfo<DeviceDateCurrent>(deviceDateCurrents);
+        PageInfo<Stationinfo> pageInfo = new PageInfo<Stationinfo>(stationinfos);
         return  pageInfo;
     }
-    @RequestMapping("getListDefault")
-    public PageInfo<DeviceDateCurrent> getListDefault(int pageNo){
-        List<DeviceDateCurrent> deviceDateCurrents = iDeviceDateCurrentService.getListDefault(pageNo, Common.DEVICEPAGESIZE);
+    @RequestMapping("serchByUnitName")
+    public PageInfo<Stationinfo> serchByUnitName(String unit_name, int pageNo){
+        List<Stationinfo> stationinfos = iStationinfoService.serchByUnitName(pageNo, Common.STATIONPAGESIZE,unit_name);
         // 需要把Page包装成PageInfo对象才能序列化。该插件也默认实现了一个PageInf0
-        PageInfo<DeviceDateCurrent> pageInfo = new PageInfo<DeviceDateCurrent>(deviceDateCurrents);
+        PageInfo<Stationinfo> pageInfo = new PageInfo<Stationinfo>(stationinfos);
         return  pageInfo;
     }
 }

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.gas.Mapper.StationinfoMapper">
+
+    <!--auto generated Code-->
+    <sql id="all_column">
+        `index`,
+        `name` ,
+        `unit_name` ,
+         `longitude` ,
+        `latitude`
+    </sql>
+    <sql id="insert_column">
+        `name` ,
+        `unit_name` ,
+         `longitude` ,
+        `latitude`
+    </sql>
+
+    <!--auto generated Code-->
+    <insert id="insert"  useGeneratedKeys="true" keyProperty="index">
+        INSERT INTO `tbl_station_info`
+        (<include refid="all_column"/>)
+        VALUES (#{pojo.index},#{pojo.name},#{pojo.unit_name},#{pojo.longitude},#{pojo.latitude})
+    </insert>
+
+    <insert id="update" >
+        update  `tbl_station_info`
+        set
+         `index`=#{pojo.index},`name`=#{pojo.name},`unit_name`=#{pojo.unit_name},`longitude`=#{pojo.longitude},`latitude`=#{pojo.latitude} where `index`=#{pojo.index}
+    </insert>
+
+    <select id="getList" resultType="com.example.gas.entity.Stationinfo">
+        select   <include refid="all_column"/> from tbl_station_info
+    </select>
+
+    <select id="serchByUnitName" resultType="com.example.gas.entity.Stationinfo">
+        select   <include refid="all_column"/> from tbl_station_info where `unit_name` = #{unit_name}
+    </select>
+</mapper>

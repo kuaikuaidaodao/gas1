@@ -25,7 +25,7 @@
     </sql>
 
     <!--auto generated Code-->
-    <insert id="insert">
+    <insert id="insert" >
         INSERT INTO `user`
         ( `index`,
         `unit_name`,

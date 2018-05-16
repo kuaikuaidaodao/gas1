@@ -8,7 +8,7 @@ package com.example.gas.entity;
 public class Stationinfo {
     private Integer index;
     private String name;
-    private String unit_Name;
+    private String unit_name;
     private String longitude;
     private String latitude;
 
@@ -39,12 +39,12 @@ public class Stationinfo {
         this.longitude = longitude;
     }
 
-    public String getUnit_Name() {
-        return unit_Name;
+    public String getUnit_name() {
+        return unit_name;
     }
 
-    public void setUnit_Name(String unit_Name) {
-        this.unit_Name = unit_Name;
+    public void setUnit_Name(String unit_name) {
+        this.unit_name = unit_name;
     }
 
     public String getLatitude() {
