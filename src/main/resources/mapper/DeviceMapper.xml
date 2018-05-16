@@ -70,7 +70,7 @@
         <result column="version" property="version"/>
         <result column="station_name" property="station_name"/>
         <result column="energy" property="energy"/>
-        <result column="container_id" property="container_id"/>
+            <result column="medium" property="medium"/>
         </association>
         <association property="stationinfo" javaType="com.example.gas.entity.Stationinfo">
             <id column="station_name" property="name"/>
@@ -104,13 +104,16 @@
         <result column="version" property="version"/>
         <result column="station_name" property="station_name"/>
         <result column="energy" property="energy"/>
-        <result column="container_id" property="container_id"/>
+        <result column="medium" property="medium"/>
     </resultMap>
     <select id="getList" resultMap="DeviceResultMap">
         select   *  from tbl_device_data_current where station_name in (select `name` from tbl_station_info where `UNIT_NAME`=#{unit_name})
     </select>
     <select id="getListDefault" resultMap="DeviceResultMap">
         select   *  from tbl_device_data_current
+    </select>
+    <select id="getDetail" resultMap="DeviceResultMap">
+       select   *  from tbl_device_data_current where `device_id`=#{device_id}
     </select>
     <select id="getListHistory" resultMap="DeviceHistoryResultMap">
         select   *  from tbl_device_data_history where `device_id`=#{device_id} order by `date_time`
@@ -121,4 +124,13 @@
     <select id="searchDeviceList" resultMap="DeviceinfoMap">
         select   *  from tbl_device_info where `container_id`=#{container_id}
     </select>
+    <insert id="update" >
+        update  `tbl_device_info`
+        set
+         `type`=#{pojo.type},`manufacturer`=#{pojo.manufacturer},`container_num`=#{pojo.container_num},`container_id`=#{pojo.container_id}
+         ,`container_type`=#{pojo.container_type},`manufacturer_time`=#{pojo.manufacturer_time} ,`volume`=#{pojo.volume},
+         `check_time`=#{pojo.check_time},`version`=#{pojo.version} ,`station_name`=#{pojo.station_name},`energy`=#{pojo.energy} ,`medium`=#{pojo.medium}
+         where `device_id`=#{pojo.device_id}
+    </insert>
+
 </mapper>

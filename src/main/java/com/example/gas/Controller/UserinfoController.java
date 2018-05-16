@@ -28,6 +28,12 @@ public class UserinfoController {
     @Autowired
     IUserinfoService iUserinfoService;
 
+    /**
+     * 登录
+     * @param userName
+     * @param password
+     * @return
+     */
     @RequestMapping("login")
     Userinfo login(String userName, String password){
         Userinfo userinfo=userinfoMapper.login(userName,password);
@@ -42,6 +48,12 @@ public class UserinfoController {
         }
         return userinfo;
     }
+
+    /**
+     * 通过id查询信息
+     * @param id
+     * @return
+     */
     @RequestMapping("getById")
     Userinfo getById(int id){
         return userinfoMapper.get(id);

@@ -23,16 +23,33 @@ public class StationController {
     @Autowired
     IStationinfoService iStationinfoService;
 
-@RequestMapping("insert")
+    /**
+     * 站点增加
+     * @param stationinfo
+     * @return
+     */
+    @RequestMapping("insert")
     int insert(Stationinfo stationinfo){
     return iStationinfoService.insert(stationinfo);
 
 }
+
+    /**
+     * 站点修改
+     * @param stationinfo
+     * @return
+     */
     @RequestMapping("update")
     int update(Stationinfo stationinfo){
         return iStationinfoService.update(stationinfo);
 
     }
+
+    /**
+     * 站点列表
+     * @param pageNo
+     * @return
+     */
     @RequestMapping("getList")
     PageInfo<Stationinfo> getList(int pageNo){
         List<Stationinfo> stationinfos = iStationinfoService.getList(pageNo,Common.STATIONPAGESIZE);
@@ -40,6 +57,13 @@ public class StationController {
         PageInfo<Stationinfo> pageInfo = new PageInfo<Stationinfo>(stationinfos);
         return  pageInfo;
     }
+
+    /**
+     * 通过所属单位名称查询站点
+     * @param unit_name
+     * @param pageNo
+     * @return
+     */
     @RequestMapping("serchByUnitName")
     public PageInfo<Stationinfo> serchByUnitName(String unit_name, int pageNo){
         List<Stationinfo> stationinfos = iStationinfoService.serchByUnitName(pageNo, Common.STATIONPAGESIZE,unit_name);

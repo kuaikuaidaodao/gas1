@@ -21,4 +21,8 @@ public interface DeviceinfoMapper {
     List<Deviceinfo> getDeviceList();
 
     List<Deviceinfo> searchDeviceList(@Param("container_id") String container_id);
+
+    int update(Deviceinfo deviceinfo);
+
+    DeviceDateCurrent getDetail(@Param("device_id") String device_id);
 }
