@@ -63,7 +63,7 @@ public class DeviceController {
      * @return
      */
     @RequestMapping("getListHistory")
-    public PageInfo<DeviceDateHistory> getListHistory(int device_id,int pageNo){
+    public PageInfo<DeviceDateHistory> getListHistory(String device_id,int pageNo){
         List<DeviceDateHistory> deviceDateHistory = iDeviceDateCurrentService.getListHistory(pageNo, Common.DEVICEPAGESIZE,device_id);
         // 需要把Page包装成PageInfo对象才能序列化。该插件也默认实现了一个PageInf0
         PageInfo<DeviceDateHistory> pageInfo = new PageInfo<DeviceDateHistory>(deviceDateHistory);

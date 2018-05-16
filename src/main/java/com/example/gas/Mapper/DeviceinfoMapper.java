@@ -16,7 +16,7 @@ public interface DeviceinfoMapper {
     List<DeviceDateCurrent> getList(@Param("unit_name") String unit_name);
     List<DeviceDateCurrent> getListDefault();
 
-    List<DeviceDateHistory> getListHistory(@Param("device_id") int device_id);
+    List<DeviceDateHistory> getListHistory(@Param("device_id") String device_id);
 
     List<Deviceinfo> getDeviceList();
 

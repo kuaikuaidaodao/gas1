@@ -29,7 +29,7 @@ public class DeviceDateCurrentService implements IDeviceDateCurrentService {
     }
 
     @Override
-    public List<DeviceDateHistory> getListHistory(int pageNo, int pagesize, int device_id) {
+    public List<DeviceDateHistory> getListHistory(int pageNo, int pagesize, String device_id) {
         PageHelper.startPage(pageNo, pagesize);
         return deviceinfoMapper.getListHistory(device_id);
     }

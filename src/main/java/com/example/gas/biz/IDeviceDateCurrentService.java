@@ -10,7 +10,7 @@ public interface IDeviceDateCurrentService {
     List<DeviceDateCurrent> getList(int pageNo, int pageSize,String unit_name);
     List<DeviceDateCurrent> getListDefault(int pageNo, int pageSize);
 
-    List<DeviceDateHistory> getListHistory(int pageNo, int devicepagesize, int device_id);
+    List<DeviceDateHistory> getListHistory(int pageNo, int devicepagesize, String device_id);
 
     List<Deviceinfo> getDeviceList(int pageNo, int pageSize);
     List<Deviceinfo> searchDeviceList(int pageNo, int pageSize,String container_id);
