@@ -7,6 +7,7 @@ public class StationGroup {
     private String name;
     private String unit_name;
     private List list;
+    private long device_id;
 
     public String getName() {
         return name;
@@ -30,5 +31,13 @@ public class StationGroup {
 
     public void setList(List list) {
         this.list = list;
+    }
+
+    public long getDevice_id() {
+        return device_id;
+    }
+
+    public void setDevice_id(long device_id) {
+        this.device_id = device_id;
     }
 }

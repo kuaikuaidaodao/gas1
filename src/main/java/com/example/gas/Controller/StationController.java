@@ -105,6 +105,7 @@ public class StationController {
         List list2=null;
         if (list.size()>0){
             stationGroup.setName(list.get(0).getName());
+            stationGroup.setDevice_id(list.get(0).getDevice_id());
             list2=new ArrayList();
             for (Stationinfo stationinfo: list){
                 list2.add(stationinfo.getUnit_name());

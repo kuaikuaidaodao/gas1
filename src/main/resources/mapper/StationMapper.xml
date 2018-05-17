@@ -8,13 +8,15 @@
         `name` ,
         `unit_name` ,
          `longitude` ,
-        `latitude`
+        `latitude`,
+        `device_id`
     </sql>
     <sql id="insert_column">
         `name` ,
         `unit_name` ,
          `longitude` ,
-        `latitude`
+        `latitude`,
+        `device_id`
     </sql>
     <resultMap id="unitNameMap"   type="HashMap">
         <result column="unit_name" property="unit_name"/>
@@ -36,7 +38,7 @@
         select   <include refid="all_column"/> from tbl_station_info
     </select>
     <select id="getGroupListByNameOrImit" resultType="com.example.gas.entity.Stationinfo">
-        select   <include refid="all_column"/> from tbl_station_info where name=#{info}
+        select   <include refid="all_column"/> from tbl_station_info where name=#{info} union select   <include refid="all_column"/> from tbl_station_info where name=#{info}
     </select>
 
     <select id="serchByUnitName" resultType="com.example.gas.entity.Stationinfo">

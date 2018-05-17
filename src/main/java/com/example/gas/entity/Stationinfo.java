@@ -11,6 +11,7 @@ public class Stationinfo {
     private String unit_name;
     private String longitude;
     private String latitude;
+    private long device_id;
 
     public Integer getIndex() {
         return index;
@@ -55,6 +56,17 @@ public class Stationinfo {
         this.latitude = latitude;
     }
 
+    public void setUnit_name(String unit_name) {
+        this.unit_name = unit_name;
+    }
+
+    public long getDevice_id() {
+        return device_id;
+    }
+
+    public void setDevice_id(long device_id) {
+        this.device_id = device_id;
+    }
 }
 
 
