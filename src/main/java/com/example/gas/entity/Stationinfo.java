@@ -6,22 +6,20 @@ package com.example.gas.entity;
  * @desc 用户
  **/
 public class Stationinfo {
-    private Integer index;
+    private int index;
     private String name;
     private String unit_name;
     private String longitude;
     private String latitude;
     private long device_id;
 
-    public Integer getIndex() {
+    public int getIndex() {
         return index;
     }
 
-    public void setIndex(Integer index) {
+    public void setIndex(int index) {
         this.index = index;
-
-
-}
+    }
 
     public String getName() {
         return name;

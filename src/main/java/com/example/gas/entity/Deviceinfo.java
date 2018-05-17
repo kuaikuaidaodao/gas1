@@ -13,6 +13,7 @@ public class Deviceinfo {
     private String version;
     private String station_name;
     private int energy;
+    private String medium;
     public long getDevice_id() {
         return device_id;
     }
@@ -107,5 +108,13 @@ public class Deviceinfo {
 
     public void setEnergy(int energy) {
         this.energy = energy;
+    }
+
+    public String getMedium() {
+        return medium;
+    }
+
+    public void setMedium(String medium) {
+        this.medium = medium;
     }
 }

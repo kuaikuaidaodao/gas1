@@ -21,11 +21,16 @@
     <resultMap id="unitNameMap"   type="HashMap">
         <result column="unit_name" property="unit_name"/>
     </resultMap>
-    <!--auto generated Code-->
-    <insert id="insert"  useGeneratedKeys="true" keyProperty="index">
+    <!--auto generated Code  <selectKey resultType="java.lang.Long" order="AFTER" keyProperty="productId">
+          SELECT LAST_INSERT_ID()
+      </selectKey>-->
+    <insert id="insert" >
+        <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="index">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
         INSERT INTO `tbl_station_info`
-        (<include refid="all_column"/>)
-        VALUES (#{pojo.index},#{pojo.name},#{pojo.unit_name},#{pojo.longitude},#{pojo.latitude})
+        (<include refid="insert_column"/>)
+        VALUES (#{pojo.name},#{pojo.unit_name},#{pojo.longitude},#{pojo.latitude},#{pojo.device_id})
     </insert>
 
     <insert id="update" >

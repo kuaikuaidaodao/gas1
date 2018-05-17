@@ -1,6 +1,7 @@
 package com.example.gas.Controller;
 
 import com.example.gas.Config.Common;
+import com.example.gas.Mapper.DeviceinfoMapper;
 import com.example.gas.Mapper.StationinfoMapper;
 import com.example.gas.biz.IStationinfoService;
 import com.example.gas.entity.StationGroup;
@@ -28,6 +29,8 @@ public class StationController {
     IStationinfoService iStationinfoService;
     @Autowired
     StationinfoMapper stationinfoMapper;
+    @Autowired
+    DeviceinfoMapper deviceinfoMapper;
 
     /**
      * 站点增加
@@ -36,13 +39,18 @@ public class StationController {
      */
     @RequestMapping("insert")
     int insert(Stationinfo stationinfo){
-    return iStationinfoService.insert(stationinfo);
+       Map map= deviceinfoMapper.getItude(stationinfo.getDevice_id());
+       if (map!=null){
+           stationinfo.setLatitude(map.get("latitude").toString());
+           stationinfo.setLongitude(map.get("longitude").toString());
+       }
+     return iStationinfoService.insert(stationinfo);
 
 }
 
     /**
      * 站点修改
-     * @param stationinfo
+     * @param
      * @return
      */
     @RequestMapping("update")
