@@ -18,10 +18,6 @@ public class StationinfoService implements IStationinfoService {
         return stationinfoMapper.insert(stationinfo);
     }
 
-    @Override
-    public int update(Stationinfo stationinfo) {
-        return stationinfoMapper.update(stationinfo);
-    }
 
     @Override
     public List<Stationinfo> getList(int pageNo, int pageSize) {
@@ -33,5 +29,10 @@ public class StationinfoService implements IStationinfoService {
     public List<Stationinfo> serchByUnitName(int pageNo, int pageSize, String unit_name) {
         PageHelper.startPage(pageNo, pageSize);
         return stationinfoMapper.serchByUnitName(unit_name);
+    }
+
+    @Override
+    public int update(String device_id, String name) {
+    return stationinfoMapper.update(device_id,name);
     }
 }

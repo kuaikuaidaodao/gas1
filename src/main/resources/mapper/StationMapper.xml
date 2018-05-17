@@ -31,7 +31,7 @@
     <insert id="update" >
         update  `tbl_station_info`
         set
-         `index`=#{pojo.index},`name`=#{pojo.name},`unit_name`=#{pojo.unit_name},`longitude`=#{pojo.longitude},`latitude`=#{pojo.latitude} where `index`=#{pojo.index}
+         `name`=#{name} where `device_id`=#{device_id}
     </insert>
 
     <select id="getList" resultType="com.example.gas.entity.Stationinfo">

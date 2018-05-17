@@ -22,4 +22,6 @@ public interface StationinfoMapper {
     List<Map> getListByName(@Param("name") String name);
 
     List<Stationinfo> getGroupListByNameOrImit(@Param("info") String info);
+
+    int update(@Param("device_id") String device_id, @Param("name") String name);
 }

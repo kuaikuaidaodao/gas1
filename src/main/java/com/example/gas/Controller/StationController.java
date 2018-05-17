@@ -46,8 +46,8 @@ public class StationController {
      * @return
      */
     @RequestMapping("update")
-    int update(Stationinfo stationinfo){
-        return iStationinfoService.update(stationinfo);
+    int update(String device_id,String name){
+        return iStationinfoService.update(device_id,name);
 
     }
 
