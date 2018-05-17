@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 @Mapper
@@ -15,4 +16,10 @@ public interface StationinfoMapper {
     List<Stationinfo> getList();
 
     List<Stationinfo> serchByUnitName(@Param("unit_name") String unit_name);
+
+    List<Stationinfo> getStationList();
+
+    List<Map> getListByName(@Param("name") String name);
+
+    List<Stationinfo> getGroupListByNameOrImit(@Param("info") String info);
 }

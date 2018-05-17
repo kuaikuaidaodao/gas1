@@ -45,4 +45,10 @@ public class DeviceDateCurrentService implements IDeviceDateCurrentService {
         PageHelper.startPage(pageNo, pageSize);
         return deviceinfoMapper.searchDeviceList(container_id);
     }
+
+    @Override
+    public List<DeviceDateCurrent> searchBydevice_idOrstation(int pageNo, int pageSize, String searchinfo) {
+        PageHelper.startPage(pageNo, pageSize);
+        return deviceinfoMapper.searchBydevice_idOrstation(searchinfo);
+    }
 }

@@ -1,16 +1,20 @@
 package com.example.gas.Controller;
 
 import com.example.gas.Config.Common;
+import com.example.gas.Mapper.StationinfoMapper;
 import com.example.gas.biz.IStationinfoService;
-import com.example.gas.entity.DeviceDateCurrent;
+import com.example.gas.entity.StationGroup;
 import com.example.gas.entity.Stationinfo;
-import com.example.gas.entity.Userinfo;
+import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author li
@@ -22,6 +26,8 @@ import java.util.List;
 public class StationController {
     @Autowired
     IStationinfoService iStationinfoService;
+    @Autowired
+    StationinfoMapper stationinfoMapper;
 
     /**
      * 站点增加
@@ -56,6 +62,56 @@ public class StationController {
         // 需要把Page包装成PageInfo对象才能序列化。该插件也默认实现了一个PageInf0
         PageInfo<Stationinfo> pageInfo = new PageInfo<Stationinfo>(stationinfos);
         return  pageInfo;
+    }
+
+    /**
+     * 查询
+     * @param pageNo
+     * @param unit_name
+     * @return
+     */
+    @RequestMapping("getGroupList")
+    PageInfo<StationGroup> getGroupList(int pageNo,String unit_name){
+        List<Stationinfo> stationinfos=null;
+        if (unit_name!=null&&unit_name!=""){
+            stationinfos=stationinfoMapper.serchByUnitName(unit_name);
+        }else{
+            stationinfos= stationinfoMapper.getStationList();
+        }
+        List<StationGroup> stationGroups=new ArrayList<>();
+        StationGroup stationGroup;
+        for (Stationinfo station:stationinfos ){
+            stationGroup=new StationGroup();
+            stationGroup.setName(station.getName());
+            stationGroup.setList(stationinfoMapper.getListByName(station.getName()));
+            stationGroups.add(stationGroup);
+        }
+        PageHelper.startPage(pageNo, Common.DEVICEPAGESIZE);
+        // 需要把Page包装成PageInfo对象才能序列化。该插件也默认实现了一个PageInf0
+        PageInfo<StationGroup> pageInfo = new PageInfo<StationGroup>(stationGroups);
+        return  pageInfo;
+    }
+
+    /**
+     * IMIT 站点名称
+     * @param pageNo
+     * @param info
+     * @return
+     */
+    @RequestMapping("getGroupListByNameOrImit")
+    StationGroup getGroupListByNameOrImit(int pageNo,String info){
+       List<Stationinfo> list=stationinfoMapper.getGroupListByNameOrImit(info);
+        StationGroup stationGroup=new StationGroup();
+        List list2=null;
+        if (list.size()>0){
+            stationGroup.setName(list.get(0).getName());
+            list2=new ArrayList();
+            for (Stationinfo stationinfo: list){
+                list2.add(stationinfo.getUnit_name());
+            }
+        }
+            stationGroup.setList(list2);
+        return  stationGroup;
     }
 
     /**

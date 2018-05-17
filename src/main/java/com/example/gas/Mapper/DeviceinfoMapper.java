@@ -25,4 +25,6 @@ public interface DeviceinfoMapper {
     int update(Deviceinfo deviceinfo);
 
     DeviceDateCurrent getDetail(@Param("device_id") String device_id);
+
+    List<DeviceDateCurrent> searchBydevice_idOrstation(@Param("searchinfo") String searchinfo);
 }

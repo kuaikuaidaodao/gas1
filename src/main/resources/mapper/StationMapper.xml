@@ -16,7 +16,9 @@
          `longitude` ,
         `latitude`
     </sql>
-
+    <resultMap id="unitNameMap"   type="HashMap">
+        <result column="unit_name" property="unit_name"/>
+    </resultMap>
     <!--auto generated Code-->
     <insert id="insert"  useGeneratedKeys="true" keyProperty="index">
         INSERT INTO `tbl_station_info`
@@ -33,8 +35,18 @@
     <select id="getList" resultType="com.example.gas.entity.Stationinfo">
         select   <include refid="all_column"/> from tbl_station_info
     </select>
+    <select id="getGroupListByNameOrImit" resultType="com.example.gas.entity.Stationinfo">
+        select   <include refid="all_column"/> from tbl_station_info where name=#{info}
+    </select>
 
     <select id="serchByUnitName" resultType="com.example.gas.entity.Stationinfo">
-        select   <include refid="all_column"/> from tbl_station_info where `unit_name` = #{unit_name}
+        select   <include refid="all_column"/> from tbl_station_info  where `unit_name` = #{unit_name}
     </select>
+    <select id="getStationList" resultType="com.example.gas.entity.Stationinfo">
+        select   <include refid="all_column"/> from tbl_station_info group by name
+    </select>
+    <select id="getListByName" resultMap="unitNameMap">
+        select unit_name from tbl_station_info where name=#{name}
+    </select>
+
 </mapper>

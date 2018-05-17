@@ -112,6 +112,9 @@
     <select id="getListDefault" resultMap="DeviceResultMap">
         select   *  from tbl_device_data_current
     </select>
+    <select id="searchBydevice_idOrstation" resultMap="DeviceResultMap">
+       select   *  from tbl_device_data_current where `device_id`=#{searchinfo} union select   *  from tbl_device_data_current where `station_name`=#{searchinfo}
+    </select>
     <select id="getDetail" resultMap="DeviceResultMap">
        select   *  from tbl_device_data_current where `device_id`=#{device_id}
     </select>
