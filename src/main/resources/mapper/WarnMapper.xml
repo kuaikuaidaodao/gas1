@@ -51,9 +51,10 @@
     <insert id="update">
         update  `tbl_warn_info`
         set
-        device_id=#{pojo.device_id},low_weight=#{pojo.low_weight},height_weight=#{pojo.height_weight},
+       low_weight=#{pojo.low_weight},height_weight=#{pojo.height_weight},
         low_pressure=#{pojo.low_pressure},height_pressure=#{pojo.height_pressure},low_temperature=#{pojo.low_temperature},
         height_temperature=#{pojo.height_temperature},low_voltage=#{pojo.low_voltage},height_voltage=#{pojo.height_voltage}
+        where device_id = #{pojo.device_id}
     </insert>
     <insert id="saveOrUpdate" >
         <selectKey keyProperty="count" resultType="int" order="BEFORE">
@@ -62,10 +63,10 @@
         <if test="count > 0">
             update  `tbl_warn_info`
             set
-            device_id=#{pojo.device_id},low_weight=#{pojo.low_weight},height_weight=#{pojo.height_weight},
+            low_weight=#{pojo.low_weight},height_weight=#{pojo.height_weight},
             low_pressure=#{pojo.low_pressure},height_pressure=#{pojo.height_pressure},low_temperature=#{pojo.low_temperature},
             height_temperature=#{pojo.height_temperature},low_voltage=#{pojo.low_voltage},height_voltage=#{pojo.height_voltage}
-            where device_id = #{device_id}
+            where device_id = #{pojo.device_id}
         </if>
         <if test="count==0">
             INSERT INTO `tbl_warn_info`(
