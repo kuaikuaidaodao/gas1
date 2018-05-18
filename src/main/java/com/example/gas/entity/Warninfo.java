@@ -82,5 +82,4 @@ public class Warninfo {
     public void setDevice_id(long device_id) {
         this.device_id = device_id;
     }
-
 }

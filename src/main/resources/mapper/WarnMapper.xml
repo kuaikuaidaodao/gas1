@@ -26,7 +26,21 @@
           `low_voltage`,
          `height_voltage`
     </sql>
-
+    <resultMap id="DeviceWarninfoMap" type="com.example.gas.entity.DeviceWarninfo" >
+        <id column="device_id" property="device_id"/>
+        <result column="type" property="type"/>
+        <association property="warninfo" javaType="com.example.gas.entity.Warninfo">
+            <id column="device_id" property="device_id"/>
+            <result column="low_weight" property="low_weight"/>
+            <result column="height_weight" property="height_weight"/>
+            <result column="low_pressure" property="low_pressure"/>
+            <result column="height_pressure" property="height_pressure"/>
+            <result column="low_temperature" property="low_temperature"/>
+            <result column="height_temperature" property="height_temperature"/>
+            <result column="low_voltage" property="low_voltage"/>
+            <result column="height_voltage" property="height_voltage"/>
+        </association>
+    </resultMap>
     <!--auto generated Code-->
     <insert id="insert">
         INSERT INTO `tbl_warn_info`(
@@ -69,4 +83,7 @@
             (#{pojo.device_id},#{pojo.low_weight},#{pojo.height_weight},#{pojo.low_pressure},#{pojo.height_pressure},#{pojo.low_temperature},#{pojo.height_temperature},#{pojo.low_voltage},#{pojo.height_voltage})
         </foreach>
     </insert>
+    <select id="getList" resultMap="DeviceWarninfoMap">
+        SELECT a.device_id,b.* from tbl_device_info  a LEFT JOIN tbl_warn_info b on a.device_id=b.device_id
+    </select>
 </mapper>

@@ -1,6 +1,7 @@
 package com.example.gas.biz;
 
 import com.example.gas.entity.Userinfo;
+import com.example.gas.entity.Warninfo;
 
 import java.util.List;
 
@@ -12,4 +13,6 @@ import java.util.List;
 public interface IWarninfoService {
     void add();
     void update();
+
+    List<Warninfo> getList(int pageNo, int userpagesize);
 }

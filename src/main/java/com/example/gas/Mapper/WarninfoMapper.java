@@ -15,4 +15,6 @@ public interface WarninfoMapper {
     int insertList(@Param("pojo") List<Warninfo> pojos);
 
     int update(@Param("pojo") Warninfo pojo);
+    int saveOrUpdate(@Param("pojo") Warninfo pojo);
+    List<Warninfo> getList();
 }

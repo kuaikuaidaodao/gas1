@@ -26,15 +26,18 @@
 
     <!--auto generated Code-->
     <insert id="insert" >
+        <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="index">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
         INSERT INTO `user`
-        ( `index`,
+        (
         `unit_name`,
         `user_name`,
          `email`,
         `telephone`,
         `create_time`,
          `password`)
-        VALUES (#{pojo.index},#{pojo.unitName},#{pojo.userName},#{pojo.email},#{pojo.telePhone},#{pojo.createTime},#{pojo.password})
+        VALUES (#{pojo.unitName},#{pojo.userName},#{pojo.email},#{pojo.telePhone},#{pojo.createTime},#{pojo.password})
     </insert>
 
     <!--auto generated Code-->
