@@ -1,5 +1,6 @@
 package com.example.gas.biz;
 
+import com.example.gas.entity.DeviceWarninfo;
 import com.example.gas.entity.Userinfo;
 import com.example.gas.entity.Warninfo;
 
@@ -14,5 +15,5 @@ public interface IWarninfoService {
     void add();
     void update();
 
-    List<Warninfo> getList(int pageNo, int userpagesize);
+    List<DeviceWarninfo> getList(int pageNo, int pagesize);
 }

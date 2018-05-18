@@ -2,6 +2,7 @@ package com.example.gas.biz.iml;
 
 import com.example.gas.Mapper.WarninfoMapper;
 import com.example.gas.biz.IWarninfoService;
+import com.example.gas.entity.DeviceWarninfo;
 import com.example.gas.entity.Warninfo;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,7 @@ public class WarninfoService implements IWarninfoService {
     }
 
     @Override
-    public List<Warninfo> getList(int pageNo, int pageSize) {
+    public List<DeviceWarninfo> getList(int pageNo, int pageSize) {
         PageHelper.startPage(pageNo, pageSize);
         return warninfoMapper.getList();
     }

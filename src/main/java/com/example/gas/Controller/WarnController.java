@@ -3,6 +3,7 @@ package com.example.gas.Controller;
 import com.example.gas.Config.Common;
 import com.example.gas.Mapper.WarninfoMapper;
 import com.example.gas.biz.IWarninfoService;
+import com.example.gas.entity.DeviceWarninfo;
 import com.example.gas.entity.Userinfo;
 import com.example.gas.entity.Warninfo;
 import com.github.pagehelper.PageInfo;
@@ -23,15 +24,15 @@ public class WarnController {
     public int  update(Warninfo warninfo){
         return warninfoMapper.update(warninfo);
     }
-    @RequestMapping("insert")
-    public void insert(Warninfo warninfo){
-        warninfoMapper.insert(warninfo);
+    @RequestMapping("getById")
+    public DeviceWarninfo getById(String device_id){
+       return warninfoMapper.getById(device_id);
     }
     @RequestMapping("getList")
-    PageInfo<Warninfo> getList(int pageNo){
-        List<Warninfo> warninfos = iWarninfoService.getList(pageNo, Common.USERPAGESIZE);
+    PageInfo<DeviceWarninfo> getList(int pageNo){
+        List<DeviceWarninfo> warninfos = iWarninfoService.getList(pageNo, Common.USERPAGESIZE);
         // 需要把Page包装成PageInfo对象才能序列化。该插件也默认实现了一个PageInf0
-        PageInfo<Warninfo> pageInfo = new PageInfo<Warninfo>(warninfos);
+        PageInfo<DeviceWarninfo> pageInfo = new PageInfo<DeviceWarninfo>(warninfos);
         return  pageInfo;
     }
     @RequestMapping("saveOrUpdate")

@@ -1,5 +1,6 @@
 package com.example.gas.Mapper;
 
+import com.example.gas.entity.DeviceWarninfo;
 import com.example.gas.entity.Userinfo;
 import com.example.gas.entity.Warninfo;
 import org.apache.ibatis.annotations.Mapper;
@@ -16,5 +17,7 @@ public interface WarninfoMapper {
 
     int update(@Param("pojo") Warninfo pojo);
     int saveOrUpdate(@Param("pojo") Warninfo pojo);
-    List<Warninfo> getList();
+    List<DeviceWarninfo> getList();
+
+    DeviceWarninfo getById(@Param("device_id") String device_id);
 }
