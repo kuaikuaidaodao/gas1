@@ -9,7 +9,7 @@ public class Warninfo {
     private float height_temperature;
     private float low_voltage;
     private float height_voltage;
-    private long device_id;
+    private String device_id;
 
     public Integer getLow_weight() {
         return low_weight;
@@ -75,11 +75,11 @@ public class Warninfo {
         this.height_voltage = height_voltage;
     }
 
-    public long getDevice_id() {
+    public String getDevice_id() {
         return device_id;
     }
 
-    public void setDevice_id(long device_id) {
+    public void setDevice_id(String device_id) {
         this.device_id = device_id;
     }
 }

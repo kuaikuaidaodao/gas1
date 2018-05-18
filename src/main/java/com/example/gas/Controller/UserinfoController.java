@@ -72,4 +72,5 @@ public class UserinfoController {
         PageInfo<Userinfo> pageInfo = new PageInfo<Userinfo>(userinfos);
         return  pageInfo;
     }
+
 }

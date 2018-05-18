@@ -43,7 +43,7 @@ public class WarnController {
         int k=1;
         if (ids.length>0){
             for (String device_id:ids){
-                warninfo.setDevice_id(Long.valueOf(device_id));
+                warninfo.setDevice_id(device_id);
                int i= warninfoMapper.saveOrUpdate(warninfo);
                if (i!=1){
                    k=0;
