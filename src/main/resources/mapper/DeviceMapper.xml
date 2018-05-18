@@ -73,7 +73,8 @@
             <result column="medium" property="medium"/>
         </association>
         <association property="stationinfo" javaType="com.example.gas.entity.Stationinfo">
-            <id column="station_name" property="name"/>
+            <id column="device_id" property="device_id"/>
+            <result column="name" property="name"/>
             <result column="index" property="index"/>
             <result column="unit_name" property="unit_name"/>
             <result column="longitude" property="longitude"/>
@@ -110,7 +111,8 @@
         select   *  from tbl_device_data_current where station_name in (select `name` from tbl_station_info where `UNIT_NAME`=#{unit_name})
     </select>
     <select id="getListDefault" resultMap="DeviceResultMap">
-        select   a.*,b.*,c.*,d.*  from tbl_device_data_current a,tbl_station_info b,tbl_device_info c,tbl_warn_info d  where a.device_id=c.device_id and a.station_name=b.name and a.device_id=d.device_id
+        select   a.*,b.*,c.*,d.*  from tbl_device_data_current a LEFT JOIN tbl_station_info b ON a.DEVICE_ID=b.device_id
+ LEFT JOIN tbl_device_info c ON a.DEVICE_ID=c.DEVICE_ID LEFT JOIN tbl_warn_info d ON a.DEVICE_ID=d.DEVICE_ID
     </select>
     <select id="searchBydevice_idOrstation" resultMap="DeviceResultMap">
        select   *  from tbl_device_data_current where `device_id`=#{searchinfo} union select   *  from tbl_device_data_current where `station_name`=#{searchinfo}
