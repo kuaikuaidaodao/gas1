@@ -58,7 +58,7 @@
     </insert>
     <insert id="saveOrUpdate" >
         <selectKey keyProperty="count" resultType="int" order="BEFORE">
-            select count(*) from tbl_warn_info where device_id = #{device_id}
+            select count(*) from tbl_warn_info where device_id = #{pojo.device_id}
         </selectKey>
         <if test="count > 0">
             update  `tbl_warn_info`

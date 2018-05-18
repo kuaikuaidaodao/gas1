@@ -37,7 +37,7 @@ public class WarnController {
     }
     @RequestMapping("saveOrUpdate")
     public int saveOrUpdate(Warninfo warninfo){
-        String id=String.valueOf(warninfo.getDevice_id());
+        String id=warninfo.getDevice_id();
         System.out.println(id+"---------");
         String[] ids=id.split(",");
         int k=1;
