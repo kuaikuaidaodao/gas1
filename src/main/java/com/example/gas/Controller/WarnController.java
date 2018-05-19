@@ -8,6 +8,7 @@ import com.example.gas.entity.Userinfo;
 import com.example.gas.entity.Warninfo;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -36,7 +37,7 @@ public class WarnController {
         return  pageInfo;
     }
     @RequestMapping("saveOrUpdate")
-    public int saveOrUpdate(Warninfo warninfo){
+    public int saveOrUpdate(@RequestBody Warninfo warninfo){
         String id=warninfo.getDevice_id();
         System.out.println(id+"---------");
         String[] ids=id.split(",");

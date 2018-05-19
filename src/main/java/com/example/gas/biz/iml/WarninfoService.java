@@ -22,15 +22,6 @@ public class WarninfoService implements IWarninfoService {
     @Autowired
     private WarninfoMapper warninfoMapper;
 
-    @Override
-    public void add() {
-
-    }
-
-    @Override
-    public void update() {
-
-    }
 
     @Override
     public List<DeviceWarninfo> getList(int pageNo, int pageSize) {

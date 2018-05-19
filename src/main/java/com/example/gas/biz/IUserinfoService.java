@@ -10,7 +10,8 @@ import java.util.List;
  * @desc
  **/
 public interface IUserinfoService {
+//    用户查询
     List<Userinfo> findByPage(int pageNo, int pageSize);
-
+// 通过用户名查询
     List<Userinfo> searchByName(int i, int i1, String unit_name);
 }

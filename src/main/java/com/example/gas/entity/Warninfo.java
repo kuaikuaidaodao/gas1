@@ -11,6 +11,9 @@ public class Warninfo {
     private float height_voltage;
     private String device_id;
 
+    public Warninfo() {
+    }
+
     public Integer getLow_weight() {
         return low_weight;
     }
@@ -81,5 +84,20 @@ public class Warninfo {
 
     public void setDevice_id(String device_id) {
         this.device_id = device_id;
+    }
+
+    @Override
+    public String toString() {
+        return "Warninfo{" +
+                "low_weight=" + low_weight +
+                ", height_weight=" + height_weight +
+                ", low_pressure=" + low_pressure +
+                ", height_pressure=" + height_pressure +
+                ", low_temperature=" + low_temperature +
+                ", height_temperature=" + height_temperature +
+                ", low_voltage=" + low_voltage +
+                ", height_voltage=" + height_voltage +
+                ", device_id='" + device_id + '\'' +
+                '}';
     }
 }

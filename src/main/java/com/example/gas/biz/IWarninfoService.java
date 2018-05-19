@@ -12,8 +12,7 @@ import java.util.List;
  * @desc
  **/
 public interface IWarninfoService {
-    void add();
-    void update();
 
+//设备及警告信息
     List<DeviceWarninfo> getList(int pageNo, int pagesize);
 }
