@@ -25,8 +25,8 @@
         <result column="consumption_lastday" property="consumption_lastday"/>
         <result column="consumption_lastmonth" property="consumption_lastmonth"/>
         <result column="consumption_lastyear" property="consumption_lastyear"/>
-        <result column="date_time" property="date_time"/>
-        <result column="date_interval" property="date_interval"/>
+        <result column="data_time" property="data_time"/>
+        <result column="data_interval" property="data_interval"/>
         <result column="station_name" property="station_name"/>
     </resultMap>
     <!--auto generated Code-->
@@ -54,7 +54,7 @@
         <result column="consumption_lastday" property="consumption_lastday"/>
         <result column="consumption_lastmonth" property="consumption_lastmonth"/>
         <result column="consumption_lastyear" property="consumption_lastyear"/>
-        <result column="date_time" property="date_time"/>
+        <result column="data_time" property="data_time"/>
         <result column="date_interval" property="date_interval"/>
         <result column="station_name" property="station_name"/>
         <association property="deviceinfo" javaType="com.example.gas.entity.Deviceinfo">
@@ -121,7 +121,7 @@
        select   *  from tbl_device_data_current where `device_id`=#{device_id}
     </select>
     <select id="getListHistory" resultMap="DeviceHistoryResultMap">
-        select   *  from tbl_device_data_history where `device_id`=#{device_id} order by `date_time`
+        select   *  from tbl_device_data_history where `device_id`=#{device_id} order by `data_time`
     </select>
     <select id="getDeviceList" resultMap="DeviceinfoMap">
         select   *  from tbl_device_info

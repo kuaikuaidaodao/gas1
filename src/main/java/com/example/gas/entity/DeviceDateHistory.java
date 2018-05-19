@@ -24,8 +24,8 @@ public class DeviceDateHistory {
     private String consumption_lastday;
     private String consumption_lastmonth;
     private String consumption_lastyear;
-    private String date_time;
-    private int date_interval;
+    private String data_time;
+    private int data_interval;
     private String station_name;
 
     public int getIndex() {
@@ -212,20 +212,20 @@ public class DeviceDateHistory {
         this.consumption_lastyear = consumption_lastyear;
     }
 
-    public String getDate_time() {
-        return date_time;
+    public String getData_time() {
+        return data_time;
     }
 
-    public void setDate_time(String date_time) {
-        this.date_time = date_time;
+    public void setDate_time(String data_time) {
+        this.data_time = data_time;
     }
 
-    public int getDate_interval() {
-        return date_interval;
+    public int getData_interval() {
+        return data_interval;
     }
 
-    public void setDate_interval(int date_interval) {
-        this.date_interval = date_interval;
+    public void setDate_interval(int data_interval) {
+        this.data_interval = data_interval;
     }
 
     public String getStation_name() {

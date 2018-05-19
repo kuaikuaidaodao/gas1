@@ -23,7 +23,7 @@ public class DeviceDateCurrent {
     private String consumption_lastday;
     private String consumption_lastmonth;
     private String consumption_lastyear;
-    private String date_time;
+    private String data_time;
     private int date_interval;
     private String station_name;
     private Stationinfo stationinfo;
@@ -206,11 +206,11 @@ public class DeviceDateCurrent {
     }
 
     public String getDate_time() {
-        return date_time;
+        return data_time;
     }
 
-    public void setDate_time(String date_time) {
-        this.date_time = date_time;
+    public void setDate_time(String data_time) {
+        this.data_time = data_time;
     }
 
     public int getDate_interval() {
