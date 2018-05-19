@@ -115,7 +115,7 @@
  LEFT JOIN tbl_device_info c ON a.DEVICE_ID=c.DEVICE_ID LEFT JOIN tbl_warn_info d ON a.DEVICE_ID=d.DEVICE_ID
     </select>
     <select id="searchBydevice_idOrstation" resultMap="DeviceResultMap">
-       select   *  from tbl_device_data_current where `device_id`=#{searchinfo} union select   *  from tbl_device_data_current where `station_name`=#{searchinfo}
+       select   *  from tbl_device_data_current where `device_id`=#{info} union select   *  from tbl_device_data_current where `station_name`=#{info}
     </select>
     <select id="getDetail" resultMap="DeviceResultMap">
        select   *  from tbl_device_data_current where `device_id`=#{device_id}
