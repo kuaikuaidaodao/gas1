@@ -29,4 +29,5 @@ public interface DeviceinfoMapper {
     List<DeviceDateCurrent> searchBydevice_idOrstation(@Param("searchinfo") String searchinfo);
 
     Map getItude(long device_id);
+    Deviceinfo getDeviceListByDervice_id(@Param("device_id") String device_id);
 }

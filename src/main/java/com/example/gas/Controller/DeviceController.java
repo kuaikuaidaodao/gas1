@@ -11,7 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 @RestController
 @RequestMapping("/device")
 public class DeviceController {
@@ -70,11 +73,14 @@ public class DeviceController {
      * @return
      */
     @RequestMapping("getListHistory")
-    public PageInfo<DeviceDateHistory> getListHistory(String device_id,int pageNo){
+    public Map getListHistory(String device_id,int pageNo){
         List<DeviceDateHistory> deviceDateHistory = iDeviceDateCurrentService.getListHistory(pageNo, Common.DEVICEPAGESIZE,device_id);
+          Map map=new HashMap();
         // 需要把Page包装成PageInfo对象才能序列化。该插件也默认实现了一个PageInf0
         PageInfo<DeviceDateHistory> pageInfo = new PageInfo<DeviceDateHistory>(deviceDateHistory);
-        return  pageInfo;
+        map.put("deviceinfo",deviceinfoMapper.getDeviceListByDervice_id(device_id));
+        map.put("deviceHistoryinfo",pageInfo);
+        return  map;
     }
 
     /**
