@@ -106,12 +106,12 @@ public class StationController {
     /**
      * IMIT 站点名称
      *
-     * @param pageNo
+     * @param
      * @param info
      * @return
      */
     @RequestMapping("getGroupListByNameOrImit")
-    StationGroup getGroupListByNameOrImit(int pageNo, String info) {
+    StationGroup getGroupListByNameOrImit(String info) {
         List<Stationinfo> list = stationinfoMapper.getGroupListByNameOrImit(info);
         StationGroup stationGroup = new StationGroup();
         List list2 = null;

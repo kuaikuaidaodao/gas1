@@ -115,8 +115,8 @@ public class UserinfoController {
      * 待分配站点
      */
     @RequestMapping("selectStationNo")
-    List<Stationinfo> selectStationNo() {
-        return stationinfoMapper.selectStationNo();
+    List<Stationinfo> selectStationNo(int user_id) {
+        return stationinfoMapper.selectStationNo(user_id);
     }
     /**
      * 取消分配
