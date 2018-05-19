@@ -9,7 +9,7 @@
         <result column="user_name" property="userName"/>
         <result column="email" property="email"/>
         <result column="telephone" property="telePhone"/>
-        <result column="create_time" property="createTime"/>
+        <result column="create_time" property="create_time"/>
         <result column="password" property="password"/>
     </resultMap>
 
@@ -20,52 +20,55 @@
         `user_name` AS `userName`,
          `email` AS `email`,
         `telePhone` AS `telePhone`,
-        `create_time` AS `createTime`,
+        `create_time` AS `create_time`,
          `password` AS  `password`
     </sql>
 
     <!--auto generated Code-->
-    <insert id="insert" >
+    <insert id="insert">
         <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="index">
             SELECT LAST_INSERT_ID()
         </selectKey>
-        INSERT INTO `user`
+        INSERT INTO `tbl_user_info`
         (
         `unit_name`,
         `user_name`,
-         `email`,
+        `email`,
         `telephone`,
         `create_time`,
-         `password`)
-        VALUES (#{pojo.unitName},#{pojo.userName},#{pojo.email},#{pojo.telePhone},#{pojo.createTime},#{pojo.password})
+        `password`)
+        VALUES (#{pojo.unitName},#{pojo.userName},#{pojo.email},#{pojo.telePhone},#{pojo.create_time},#{pojo.password})
     </insert>
-
-    <!--auto generated Code-->
-    <insert id="insertList">
-        INSERT INTO `user`(
-        <include refid="all_column"/>
-        )VALUES
-        <foreach collection="pojos" item="pojo" index="index" separator=",">
-            (
-            #{pojo.index},#{pojo.unitName},#{pojo.userName},#{pojo.email},#{pojo.telePhone},#{pojo.createTime},#{pojo.password}
-            )
-        </foreach>
-    </insert>
-
-
+    <update id="update">
+       UPDATE `tbl_user_info`
+       SET
+        `unit_name`=#{pojo.unitName},`user_name`=#{pojo.userName},`email`=#{pojo.email},`telephone`=#{pojo.telePhone},`create_time`=#{pojo.create_time},`password`=#{pojo.password}
+        where `index`=#{pojo.index}
+    </update>
     <!--auto generated Code-->
     <select id="get" resultType="com.example.gas.entity.Userinfo">
-        select   <include refid="all_column"/> from tbl_user_info where `index` = #{id}
+        select
+        <include refid="all_column"/>
+        from tbl_user_info where `index` = #{id}
     </select>
     <select id="getList" resultType="com.example.gas.entity.Userinfo">
-        select   <include refid="all_column"/> from tbl_user_info
+        select
+        <include refid="all_column"/>
+        from tbl_user_info
     </select>
     <select id="login" resultType="com.example.gas.entity.Userinfo">
-        select   <include refid="all_column"/> from tbl_user_info WHERE `user_name` = #{userName} and `password` = #{password}
+        select
+        <include refid="all_column"/>
+        from tbl_user_info WHERE `user_name` = #{userName} and `password` = #{password}
     </select>
+    <delete id="delete">
+        delete  tbl_user_info WHERE  `index` = #{index}
+    </delete>
 
     <select id="searchByName" resultType="com.example.gas.entity.Userinfo">
-        select   <include refid="all_column"/> from tbl_user_info where  `unit_name` LIKE "%"#{unit_name}"%"
+        select
+        <include refid="all_column"/>
+        from tbl_user_info where `unit_name` LIKE "%"#{unit_name}"%"
     </select>
 
     <delete id="delete">

@@ -27,8 +27,9 @@ public class DeviceDateCurrent {
     private int date_interval;
     private String station_name;
     private Stationinfo stationinfo;
-    private Deviceinfo  deviceinfo;
+    private Deviceinfo deviceinfo;
     private Warninfo warninfo;
+
     public long getDevice_id() {
         return device_id;
     }

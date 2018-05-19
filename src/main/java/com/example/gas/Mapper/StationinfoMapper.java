@@ -12,7 +12,9 @@ import java.util.Map;
 @Mapper
 public interface StationinfoMapper {
     int insert(@Param("pojo") Stationinfo pojo);
+
     int update(@Param("pojo") Stationinfo pojo);
+
     List<Stationinfo> getList();
 
     List<Stationinfo> serchByUnitName(@Param("unit_name") String unit_name);

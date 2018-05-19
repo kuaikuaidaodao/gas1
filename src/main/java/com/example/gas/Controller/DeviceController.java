@@ -25,98 +25,108 @@ public class DeviceController {
 
     /**
      * 查询目前设备实时数据（根据单位名称查询）
+     *
      * @param unit_name
      * @param pageNo
      * @return
      */
     @RequestMapping("getList")
-    public PageInfo<DeviceDateCurrent> getList(String unit_name, int pageNo){
-        List<DeviceDateCurrent> deviceDateCurrents = iDeviceDateCurrentService.getList(pageNo, Common.DEVICEPAGESIZE,unit_name);
+    public PageInfo<DeviceDateCurrent> getList(String unit_name, int pageNo) {
+        List<DeviceDateCurrent> deviceDateCurrents = iDeviceDateCurrentService.getList(pageNo, Common.DEVICEPAGESIZE, unit_name);
         // 需要把Page包装成PageInfo对象才能序列化。该插件也默认实现了一个PageInf0
         PageInfo<DeviceDateCurrent> pageInfo = new PageInfo<DeviceDateCurrent>(deviceDateCurrents);
-        return  pageInfo;
+        return pageInfo;
     }
 
     /**
      * 查询目前设备所有实时数据
+     *
      * @param pageNo
      * @return
      */
     @RequestMapping("getListDefault")
-    public PageInfo<DeviceDateCurrent> getListDefault(int pageNo){
+    public PageInfo<DeviceDateCurrent> getListDefault(int pageNo) {
         List<DeviceDateCurrent> deviceDateCurrents = iDeviceDateCurrentService.getListDefault(pageNo, Common.DEVICEPAGESIZE);
         // 需要把Page包装成PageInfo对象才能序列化。该插件也默认实现了一个PageInf0
         PageInfo<DeviceDateCurrent> pageInfo = new PageInfo<DeviceDateCurrent>(deviceDateCurrents);
-        return  pageInfo;
+        return pageInfo;
     }
+
     @RequestMapping("searchBydevice_idOrstation")
-    public PageInfo<DeviceDateCurrent> searchBydevice_idOrstation(int pageNo,String searchinfo){
-        List<DeviceDateCurrent> deviceDateCurrents = iDeviceDateCurrentService.searchBydevice_idOrstation(pageNo, Common.DEVICEPAGESIZE,searchinfo);
+    public PageInfo<DeviceDateCurrent> searchBydevice_idOrstation(int pageNo, String searchinfo) {
+        List<DeviceDateCurrent> deviceDateCurrents = iDeviceDateCurrentService.searchBydevice_idOrstation(pageNo, Common.DEVICEPAGESIZE, searchinfo);
         // 需要把Page包装成PageInfo对象才能序列化。该插件也默认实现了一个PageInf0
         PageInfo<DeviceDateCurrent> pageInfo = new PageInfo<DeviceDateCurrent>(deviceDateCurrents);
-        return  pageInfo;
+        return pageInfo;
     }
+
     /**
      * 根据设备id查询设备详情
+     *
      * @param device_id
      * @return
      */
     @RequestMapping("getDetail")
-    public DeviceDateCurrent getDetail(String device_id){
+    public DeviceDateCurrent getDetail(String device_id) {
         DeviceDateCurrent deviceDateCurrent = deviceinfoMapper.getDetail(device_id);
-        return  deviceDateCurrent;
+        return deviceDateCurrent;
     }
+
     /**
      * 根据设备id查询设备历史数据
+     *
      * @param device_id
      * @param pageNo
      * @return
      */
     @RequestMapping("getListHistory")
-    public Map getListHistory(String device_id,int pageNo){
-        List<DeviceDateHistory> deviceDateHistory = iDeviceDateCurrentService.getListHistory(pageNo, Common.DEVICEPAGESIZE,device_id);
-          Map map=new HashMap();
+    public Map getListHistory(String device_id, int pageNo) {
+        List<DeviceDateHistory> deviceDateHistory = iDeviceDateCurrentService.getListHistory(pageNo, Common.DEVICEPAGESIZE, device_id);
+        Map map = new HashMap();
         // 需要把Page包装成PageInfo对象才能序列化。该插件也默认实现了一个PageInf0
         PageInfo<DeviceDateHistory> pageInfo = new PageInfo<DeviceDateHistory>(deviceDateHistory);
-        map.put("deviceinfo",deviceinfoMapper.getDeviceListByDervice_id(device_id));
-        map.put("deviceHistoryinfo",pageInfo);
-        return  map;
+        map.put("deviceinfo", deviceinfoMapper.getDeviceListByDervice_id(device_id));
+        map.put("deviceHistoryinfo", pageInfo);
+        return map;
     }
 
     /**
      * 查询设备信息（设备管理模块）
+     *
      * @param pageNo
      * @return
      */
     @RequestMapping("getDeviceList")
-    public PageInfo<Deviceinfo> getDeviceList(int pageNo){
+    public PageInfo<Deviceinfo> getDeviceList(int pageNo) {
         List<Deviceinfo> deviceinfos = iDeviceDateCurrentService.getDeviceList(pageNo, Common.DEVICEPAGESIZE);
         // 需要把Page包装成PageInfo对象才能序列化。该插件也默认实现了一个PageInf0
         PageInfo<Deviceinfo> pageInfo = new PageInfo<Deviceinfo>(deviceinfos);
-        return  pageInfo;
+        return pageInfo;
     }
 
     /**
      * 根据罐箱id查询设备
+     *
      * @param pageNo
      * @param container_id
      * @return
      */
     @RequestMapping("searchDeviceList")
-    public PageInfo<Deviceinfo> searchDeviceList(int pageNo,String container_id){
-        List<Deviceinfo> deviceinfos = iDeviceDateCurrentService.searchDeviceList(pageNo, Common.DEVICEPAGESIZE,container_id);
+    public PageInfo<Deviceinfo> searchDeviceList(int pageNo, String container_id) {
+        List<Deviceinfo> deviceinfos = iDeviceDateCurrentService.searchDeviceList(pageNo, Common.DEVICEPAGESIZE, container_id);
         // 需要把Page包装成PageInfo对象才能序列化。该插件也默认实现了一个PageInf0
         PageInfo<Deviceinfo> pageInfo = new PageInfo<Deviceinfo>(deviceinfos);
-        return  pageInfo;
+        return pageInfo;
     }
 
     /**
      * 修改设备信息
+     *
      * @param deviceinfo
      * @return
      */
     @RequestMapping("update")
-    public int update(Deviceinfo deviceinfo){
-        return  deviceinfoMapper.update(deviceinfo);
+    public int update(Deviceinfo deviceinfo) {
+        return deviceinfoMapper.update(deviceinfo);
     }
 }

@@ -26,7 +26,7 @@
           `low_voltage`,
          `height_voltage`
     </sql>
-    <resultMap id="DeviceWarninfoMap" type="com.example.gas.entity.DeviceWarninfo" >
+    <resultMap id="DeviceWarninfoMap" type="com.example.gas.entity.DeviceWarninfo">
         <id column="device_id" property="device_id"/>
         <result column="type" property="type"/>
         <association property="warninfo" javaType="com.example.gas.entity.Warninfo">
@@ -56,12 +56,12 @@
         height_temperature=#{pojo.height_temperature},low_voltage=#{pojo.low_voltage},height_voltage=#{pojo.height_voltage}
         where device_id = #{pojo.device_id}
     </insert>
-    <insert id="saveOrUpdate" >
+    <insert id="saveOrUpdate">
         <selectKey keyProperty="count" resultType="int" order="BEFORE">
             select count(*) from tbl_warn_info where device_id = #{pojo.device_id}
         </selectKey>
         <if test="count > 0">
-            update  `tbl_warn_info`
+            update `tbl_warn_info`
             set
             low_weight=#{pojo.low_weight},height_weight=#{pojo.height_weight},
             low_pressure=#{pojo.low_pressure},height_pressure=#{pojo.height_pressure},low_temperature=#{pojo.low_temperature},

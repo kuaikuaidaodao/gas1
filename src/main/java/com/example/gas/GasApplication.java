@@ -21,29 +21,32 @@ import java.util.UUID;
 @Controller
 @SpringBootApplication
 public class GasApplication {
-	@Autowired
+    @Autowired
     IUserinfoService iUserinfoService;
-@RequestMapping("/")
-@ResponseBody
-PageInfo<Userinfo> home(){
-    List<Userinfo> persons = iUserinfoService.findByPage(1, 2);
-    // 需要把Page包装成PageInfo对象才能序列化。该插件也默认实现了一个PageInfo
-    PageInfo<Userinfo> pageInfo = new PageInfo<Userinfo>(persons);
-    return pageInfo;
-}
-	public static void main(String[] args) {
-		SpringApplication.run(GasApplication.class, args);
-	}
-	  @Bean
-      PageHelper pageHelper(){
-            //分页插件
-            PageHelper pageHelper = new PageHelper();
-            Properties properties = new Properties();
-            properties.setProperty("reasonable", "true");
-            properties.setProperty("supportMethodsArguments", "true");
-            properties.setProperty("returnPageInfo", "check");
-            properties.setProperty("params", "count=countSql");
-            pageHelper.setProperties(properties);
-           return pageHelper;
-}
+
+    @RequestMapping("/")
+    @ResponseBody
+    PageInfo<Userinfo> home() {
+        List<Userinfo> persons = iUserinfoService.findByPage(1, 2);
+        // 需要把Page包装成PageInfo对象才能序列化。该插件也默认实现了一个PageInfo
+        PageInfo<Userinfo> pageInfo = new PageInfo<Userinfo>(persons);
+        return pageInfo;
+    }
+
+    public static void main(String[] args) {
+        SpringApplication.run(GasApplication.class, args);
+    }
+
+    @Bean
+    PageHelper pageHelper() {
+        //分页插件
+        PageHelper pageHelper = new PageHelper();
+        Properties properties = new Properties();
+        properties.setProperty("reasonable", "true");
+        properties.setProperty("supportMethodsArguments", "true");
+        properties.setProperty("returnPageInfo", "check");
+        properties.setProperty("params", "count=countSql");
+        pageHelper.setProperties(properties);
+        return pageHelper;
+    }
 }

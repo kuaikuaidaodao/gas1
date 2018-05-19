@@ -13,6 +13,6 @@ import java.util.List;
  **/
 public interface IWarninfoService {
 
-//设备及警告信息
+    //设备及警告信息
     List<DeviceWarninfo> getList(int pageNo, int pagesize);
 }

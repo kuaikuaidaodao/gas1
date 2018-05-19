@@ -21,37 +21,41 @@ public class WarnController {
     IWarninfoService iWarninfoService;
     @Autowired
     WarninfoMapper warninfoMapper;
+
     @RequestMapping("update")
-    public int  update(Warninfo warninfo){
+    public int update(Warninfo warninfo) {
         return warninfoMapper.update(warninfo);
     }
+
     @RequestMapping("getById")
-    public DeviceWarninfo getById(String device_id){
-       return warninfoMapper.getById(device_id);
+    public DeviceWarninfo getById(String device_id) {
+        return warninfoMapper.getById(device_id);
     }
+
     @RequestMapping("getList")
-    PageInfo<DeviceWarninfo> getList(int pageNo){
+    PageInfo<DeviceWarninfo> getList(int pageNo) {
         List<DeviceWarninfo> warninfos = iWarninfoService.getList(pageNo, Common.USERPAGESIZE);
         // 需要把Page包装成PageInfo对象才能序列化。该插件也默认实现了一个PageInf0
         PageInfo<DeviceWarninfo> pageInfo = new PageInfo<DeviceWarninfo>(warninfos);
-        return  pageInfo;
+        return pageInfo;
     }
+
     @RequestMapping("saveOrUpdate")
-    public int saveOrUpdate(@RequestBody Warninfo warninfo){
-        String id=warninfo.getDevice_id();
-        System.out.println(id+"---------");
-        String[] ids=id.split(",");
-        int k=1;
-        if (ids.length>0){
-            for (String device_id:ids){
+    public int saveOrUpdate(@RequestBody Warninfo warninfo) {
+        String id = warninfo.getDevice_id();
+        System.out.println(id + "---------");
+        String[] ids = id.split(",");
+        int k = 1;
+        if (ids.length > 0) {
+            for (String device_id : ids) {
                 warninfo.setDevice_id(device_id);
-               int i= warninfoMapper.saveOrUpdate(warninfo);
-               if (i!=1){
-                   k=0;
-               }
+                int i = warninfoMapper.saveOrUpdate(warninfo);
+                if (i != 1) {
+                    k = 0;
+                }
             }
         }
-            return k;
+        return k;
     }
 
 }

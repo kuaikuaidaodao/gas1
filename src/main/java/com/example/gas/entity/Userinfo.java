@@ -11,7 +11,7 @@ public class Userinfo {
     private String userName;
     private String email;
     private String telePhone;
-    private String createTime;
+    private String create_time;
     private String password;
 
     public Integer getIndex() {
@@ -54,12 +54,12 @@ public class Userinfo {
         this.telePhone = telePhone;
     }
 
-    public String getCreateTime() {
-        return createTime;
+    public String getCreate_time() {
+        return create_time;
     }
 
-    public void setCreateTime(String createTime) {
-        this.createTime = createTime;
+    public void setCreate_time(String create_time) {
+        this.create_time = create_time;
     }
 
     public String getPassword() {

@@ -18,7 +18,6 @@ import java.util.List;
 public interface UserinfoMapper {
     int insert(@Param("pojo") Userinfo pojo);
 
-    int insertList(@Param("pojo") List<Userinfo> pojos);
 
     int update(@Param("pojo") Userinfo pojo);
 
@@ -26,7 +25,7 @@ public interface UserinfoMapper {
 
     List<Userinfo> getList();
 
-    int delete(@Param("id") int id);
+    int delete(@Param("index") int index);
 
     Userinfo login(@Param("userName") String userName, @Param("password") String password);
 

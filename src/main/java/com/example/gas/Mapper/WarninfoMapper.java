@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Mapper
 @Service
 public interface WarninfoMapper {
@@ -16,7 +17,9 @@ public interface WarninfoMapper {
     int insertList(@Param("pojo") List<Warninfo> pojos);
 
     int update(@Param("pojo") Warninfo pojo);
+
     int saveOrUpdate(@Param("pojo") Warninfo pojo);
+
     List<DeviceWarninfo> getList();
 
     DeviceWarninfo getById(@Param("device_id") String device_id);

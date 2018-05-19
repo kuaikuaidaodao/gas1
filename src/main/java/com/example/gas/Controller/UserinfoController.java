@@ -30,20 +30,21 @@ public class UserinfoController {
 
     /**
      * 登录
+     *
      * @param userName
      * @param password
      * @return
      */
     @RequestMapping("login")
-    Userinfo login(String userName, String password){
-        Userinfo userinfo=userinfoMapper.login(userName,password);
-        Map map=new HashMap();
-        if (userinfo!=null){
-            map.put("status","success");
-            map.put("登陆成功",userinfo);
-        }else {
-            map.put("status","error");
-            map.put("登陆失败","用户名不存在或密码错误");
+    Userinfo login(String userName, String password) {
+        Userinfo userinfo = userinfoMapper.login(userName, password);
+        Map map = new HashMap();
+        if (userinfo != null) {
+            map.put("status", "success");
+            map.put("登陆成功", userinfo);
+        } else {
+            map.put("status", "error");
+            map.put("登陆失败", "用户名不存在或密码错误");
 
         }
         return userinfo;
@@ -51,26 +52,52 @@ public class UserinfoController {
 
     /**
      * 通过id查询信息
+     *
      * @param id
      * @return
      */
     @RequestMapping("getById")
-    Userinfo getById(int id){
+    Userinfo getById(int id) {
         return userinfoMapper.get(id);
     }
+
     @RequestMapping("getList")
-    PageInfo<Userinfo> getList(int pageNo){
-        List<Userinfo> userinfos = iUserinfoService.findByPage(pageNo,Common.USERPAGESIZE);
+    PageInfo<Userinfo> getList(int pageNo) {
+        List<Userinfo> userinfos = iUserinfoService.findByPage(pageNo, Common.USERPAGESIZE);
         // 需要把Page包装成PageInfo对象才能序列化。该插件也默认实现了一个PageInf0
         PageInfo<Userinfo> pageInfo = new PageInfo<Userinfo>(userinfos);
-        return  pageInfo;
-    }
-    @RequestMapping("searchByName")
-    PageInfo<Userinfo> searchByName(String unit_name,int pageNo){
-        List<Userinfo> userinfos = iUserinfoService.searchByName(pageNo, Common.USERPAGESIZE,unit_name);
-        // 需要把Page包装成PageInfo对象才能序列化。该插件也默认实现了一个PageInf0
-        PageInfo<Userinfo> pageInfo = new PageInfo<Userinfo>(userinfos);
-        return  pageInfo;
+        return pageInfo;
     }
 
+    @RequestMapping("searchByName")
+    PageInfo<Userinfo> searchByName(String unit_name, int pageNo) {
+        List<Userinfo> userinfos = iUserinfoService.searchByName(pageNo, Common.USERPAGESIZE, unit_name);
+        // 需要把Page包装成PageInfo对象才能序列化。该插件也默认实现了一个PageInf0
+        PageInfo<Userinfo> pageInfo = new PageInfo<Userinfo>(userinfos);
+        return pageInfo;
+    }
+
+    /**
+     * 增加
+     */
+    @RequestMapping("insert")
+    int insert(Userinfo userinfo) {
+        return userinfoMapper.insert(userinfo);
+    }
+
+    /**
+     * 修改
+     */
+    @RequestMapping("update")
+    int update(Userinfo userinfo) {
+        return userinfoMapper.update(userinfo);
+    }
+
+    /**
+     * 删除
+     */
+    @RequestMapping("delete")
+    int delete(int index) {
+        return userinfoMapper.delete(index);
+    }
 }

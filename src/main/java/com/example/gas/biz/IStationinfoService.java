@@ -6,10 +6,13 @@ import java.util.List;
 
 public interface IStationinfoService {
     int insert(Stationinfo stationinfo);
-//站点信息查询
+
+    //站点信息查询
     List<Stationinfo> getList(int pageNo, int pageSize);
-//通过单位名称查询站点信息
+
+    //通过单位名称查询站点信息
     List<Stationinfo> serchByUnitName(int pageNo, int pageSize, String unit_name);
-// 站点修改
+
+    // 站点修改
     int update(String device_id, String name);
 }

@@ -14,6 +14,7 @@ import java.util.Map;
 @Service
 public interface DeviceinfoMapper {
     List<DeviceDateCurrent> getList(@Param("unit_name") String unit_name);
+
     List<DeviceDateCurrent> getListDefault();
 
     List<DeviceDateHistory> getListHistory(@Param("device_id") String device_id);
@@ -29,5 +30,6 @@ public interface DeviceinfoMapper {
     List<DeviceDateCurrent> searchBydevice_idOrstation(@Param("searchinfo") String searchinfo);
 
     Map getItude(long device_id);
+
     Deviceinfo getDeviceListByDervice_id(@Param("device_id") String device_id);
 }
