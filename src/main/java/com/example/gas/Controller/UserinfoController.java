@@ -2,8 +2,10 @@ package com.example.gas.Controller;
 
 
 import com.example.gas.Config.Common;
+import com.example.gas.Mapper.StationinfoMapper;
 import com.example.gas.Mapper.UserinfoMapper;
 import com.example.gas.biz.IUserinfoService;
+import com.example.gas.entity.Stationinfo;
 import com.example.gas.entity.Userinfo;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,8 @@ public class UserinfoController {
     UserinfoMapper userinfoMapper;
     @Autowired
     IUserinfoService iUserinfoService;
+    @Autowired
+    StationinfoMapper stationinfoMapper;
 
     /**
      * 登录
@@ -99,5 +103,26 @@ public class UserinfoController {
     @RequestMapping("delete")
     int delete(int index) {
         return userinfoMapper.delete(index);
+    }
+    /**
+     **通过userid查询user下站点
+     */
+    @RequestMapping("selectStation")
+    List<Stationinfo> selectStation(int user_id) {
+        return stationinfoMapper.selectStation(user_id);
+    }
+    /**
+     * 待分配站点
+     */
+    @RequestMapping("selectStationNo")
+    List<Stationinfo> selectStationNo() {
+        return stationinfoMapper.selectStationNo();
+    }
+    /**
+     * 取消分配
+     */
+    @RequestMapping("deleteStationAndUser")
+    int deleteStationAndUser(String user_id,String station_id){
+        return stationinfoMapper.deleteStationAndUser(user_id,station_id);
     }
 }

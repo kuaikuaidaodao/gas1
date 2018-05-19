@@ -42,6 +42,12 @@
     <select id="getList" resultType="com.example.gas.entity.Stationinfo">
         select   <include refid="all_column"/> from tbl_station_info
     </select>
+    <select id="selectStation" resultType="com.example.gas.entity.Stationinfo">
+        select   <include refid="all_column"/> from tbl_station_info where `index` in (select station_id from tbl_user_station where `user_id`=#{user_id})
+    </select>
+    <select id="selectStationNo" resultType="com.example.gas.entity.Stationinfo">
+        select   <include refid="all_column"/> from tbl_station_info where `index` not in (select station_id from tbl_user_station_relation)
+    </select>
     <select id="getGroupListByNameOrImit" resultType="com.example.gas.entity.Stationinfo">
         select   <include refid="all_column"/> from tbl_station_info where name=#{info} union select   <include refid="all_column"/> from tbl_station_info where name=#{info}
     </select>
@@ -55,5 +61,8 @@
     <select id="getListByName" resultMap="unitNameMap">
         select unit_name from tbl_station_info where name=#{name}
     </select>
+    <delete id="deleteStationAndUser" >
+        delete  from tbl_user_station_relation where user_id=#{user_id} and station_id=#{station_id}
+    </delete>
 
 </mapper>

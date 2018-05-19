@@ -62,7 +62,7 @@
         from tbl_user_info WHERE `user_name` = #{userName} and `password` = #{password}
     </select>
     <delete id="delete">
-        delete  tbl_user_info WHERE  `index` = #{index}
+        delete  from tbl_user_info WHERE  `index` = #{index}
     </delete>
 
     <select id="searchByName" resultType="com.example.gas.entity.Userinfo">
@@ -70,8 +70,4 @@
         <include refid="all_column"/>
         from tbl_user_info where `unit_name` LIKE "%"#{unit_name}"%"
     </select>
-
-    <delete id="delete">
-        delete from tbl_user_info where `index` = #{id}
-    </delete>
 </mapper>
