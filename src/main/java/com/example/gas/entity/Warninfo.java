@@ -5,10 +5,10 @@ public class Warninfo {
     private Integer height_weight;
     private Integer low_pressure;
     private Integer height_pressure;
-    private float low_temperature;
-    private float height_temperature;
-    private float low_voltage;
-    private float height_voltage;
+    private String low_temperature;
+    private String height_temperature;
+    private String low_voltage;
+    private String height_voltage;
     private String device_id;
 
     public Warninfo() {
@@ -46,35 +46,35 @@ public class Warninfo {
         this.height_pressure = height_pressure;
     }
 
-    public float getLow_temperature() {
+    public String getLow_temperature() {
         return low_temperature;
     }
 
-    public void setLow_temperature(float low_temperature) {
+    public void setLow_temperature(String low_temperature) {
         this.low_temperature = low_temperature;
     }
 
-    public float getHeight_temperature() {
+    public String getHeight_temperature() {
         return height_temperature;
     }
 
-    public void setHeight_temperature(float height_temperature) {
+    public void setHeight_temperature(String height_temperature) {
         this.height_temperature = height_temperature;
     }
 
-    public float getLow_voltage() {
+    public String getLow_voltage() {
         return low_voltage;
     }
 
-    public void setLow_voltage(float low_voltage) {
+    public void setLow_voltage(String low_voltage) {
         this.low_voltage = low_voltage;
     }
 
-    public float getHeight_voltage() {
+    public String getHeight_voltage() {
         return height_voltage;
     }
 
-    public void setHeight_voltage(float height_voltage) {
+    public void setHeight_voltage(String height_voltage) {
         this.height_voltage = height_voltage;
     }
 
